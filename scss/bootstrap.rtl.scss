@@ -1,0 +1,329 @@
+
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "bootstrap.variables";
+
+/*** Alert ***/
+.alert-dismissible {
+	// Adjust close link position
+	.close {
+		right: initial;
+		left: -$alert-padding-x;
+	}
+}
+
+/*** Breadcrumb ***/
+.breadcrumb-item {
+	float: right;
+}
+
+/*** Button Group ***/
+.btn-group,
+.btn-group-vertical {
+	.btn + .btn,
+	.btn + .btn-group,
+	.btn-group + .btn,
+	.btn-group + .btn-group {
+		margin-left: initial;
+		margin-right: -$input-btn-border-width;
+	}
+}
+.btn-group > .btn:first-child {
+	margin-right: 0;
+
+	&:not(:last-child):not(.dropdown-toggle) {
+		@include border-left-radius(0);
+		@include border-right-radius($border-radius);
+	}
+}
+.btn-group > .btn:last-child:not(:first-child),
+.btn-group > .dropdown-toggle:not(:first-child) {
+	@include border-left-radius($border-radius);
+	@include border-right-radius(0);
+}
+.btn-group > .btn-group {
+	float: right;
+}
+.btn-group > .btn-group:first-child:not(:last-child) {
+	> .btn:last-child,
+	> .dropdown-toggle {
+		@include border-right-radius($border-radius);
+		@include border-left-radius(0);
+	}
+}
+.btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {
+	@include border-left-radius($border-radius);
+	@include border-right-radius(0);
+}
+
+/*** Crad ***/
+.card-link {
+	+ .card-link {
+		margin-left: 0;
+		margin-right: $card-spacer-x;
+	}
+}
+
+@include media-breakpoint-up(sm) {
+	.card-group {
+
+		.card {
+			+ .card {
+				border-left: $card-border-width solid $card-border-color;
+				margin-right: 0;
+				border-right: 0;
+			}
+			// Handle rounded corners
+			@if $enable-rounded {
+				&:first-child {
+					@include border-right-radius($border-radius);
+					@include border-left-radius(0);
+
+					.card-img-top {
+						border-top-right-radius: $border-radius;
+						border-top-left-radius: 0;
+					}
+					.card-img-bottom {
+						border-bottom-right-radius: $border-radius;
+						border-bottom-left-radius: 0;
+					}
+				}
+				&:last-child {
+					@include border-left-radius($border-radius);
+					@include border-right-radius(0);
+
+					.card-img-top {
+						border-top-left-radius: $border-radius;
+						border-top-right-radius: 0;
+					}
+					.card-img-bottom {
+						border-bottom-left-radius: $border-radius;
+						border-bottom-right-radius: 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+/*** Close ***/
+.close {
+	float: left;
+}
+
+/*** Custom Forms ***/
+.custom-select {
+	background: $custom-select-bg $custom-select-indicator no-repeat left $custom-select-padding-x center;
+}
+.custom-control {
+	padding-left: 0;
+	padding-right: $custom-control-gutter;
+}
+.custom-control-label {
+	&::before {
+		left: auto;
+		right: 0;
+	}
+	&::after {
+		left: auto;
+		right: 0;
+	}
+}
+
+.custom-file-control {
+	&::before {
+		position: absolute;
+		left: -$custom-file-border-width;
+		right: initial;
+		@include border-radius($custom-file-border-radius 0 0 $custom-file-border-radius);
+	}
+}
+
+.custom-file-label {
+	&::after {
+		right: auto;
+		left: 0;
+		border-left: none;
+		border-right: $custom-file-border-width solid $custom-file-border-color;
+		@include border-radius($custom-file-border-radius 0 0 $custom-file-border-radius);
+	}
+}
+
+/*** Dropdown ***/
+.dropdown-menu {
+	text-align: right;
+}
+.dropdown-toggle {
+	// Generate the caret automatically
+	&::after {
+		margin-left: 0;
+		margin-right: $caret-width * .85;
+		vertical-align: middle;
+	}
+
+	&:empty::after {
+		margin-left: inherit;
+		margin-right: 0;
+	}
+}
+
+/*** Form ***/
+.form-check-label {
+	padding-left: 0;
+	padding-right: $form-check-input-gutter;
+}
+.form-check-input {
+	margin-left: 0;
+	margin-right: -$form-check-input-gutter;
+}
+.form-check-inline {
+  + .form-check-inline {
+	margin-left: 0;
+	margin-right: $form-check-inline-margin-x;
+  }
+}
+
+/*** Input Group ***/
+.input-group {
+	> .form-control,
+	> .custom-select {
+		&:not(:last-child) { @include border-right-radius($border-radius); @include border-left-radius(0 !important); }
+		&:not(:first-child) { @include border-left-radius($border-radius); @include border-right-radius(0 !important); }
+	}
+	> .custom-file {
+		&:not(:last-child) .custom-file-label,
+		&:not(:last-child) .custom-file-label::before { @include border-right-radius($border-radius); @include border-left-radius(0 !important); }
+		&:not(:first-child) .custom-file-label,
+		&:not(:first-child) .custom-file-label::before { @include border-left-radius($border-radius); @include border-right-radius(0 !important); }
+	}
+}
+
+.form-control + .input-group-addon:not(:first-child) {
+	border-left: $input-btn-border-width solid $input-group-addon-border-color;
+	border-right: 0;
+}
+.input-group-btn {
+	> .btn {
+		+ .btn {
+			margin-left: 0;
+			margin-right: (-$input-btn-border-width);
+		}
+	}
+	&:not(:last-child) {
+		> .btn,
+		> .btn-group {
+			margin-right: 0;
+			margin-left: (-$input-btn-border-width);
+   		}
+	}
+	&:not(:first-child) {
+		> .btn,
+		> .btn-group {
+			margin-left: 0;
+			margin-right: (-$input-btn-border-width);
+		}
+	}
+}
+
+.input-group-prepend { margin-right: 0; margin-left: -$input-border-width; }
+.input-group-append { margin-left: 0; margin-right: -$input-border-width; }
+
+.input-group > .input-group-prepend > .btn,
+.input-group > .input-group-prepend > .input-group-text,
+.input-group > .input-group-append:not(:last-child) > .btn,
+.input-group > .input-group-append:not(:last-child) > .input-group-text,
+.input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle),
+.input-group > .input-group-append:last-child > .input-group-text:not(:last-child) {
+  	@include border-left-radius(0 !important);
+	@include border-right-radius($border-radius);
+}
+
+.input-group > .input-group-append > .btn,
+.input-group > .input-group-append > .input-group-text,
+.input-group > .input-group-prepend:not(:first-child) > .btn,
+.input-group > .input-group-prepend:not(:first-child) > .input-group-text,
+.input-group > .input-group-prepend:first-child > .btn:not(:first-child),
+.input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child) {
+  	@include border-right-radius(0 !important);
+	@include border-left-radius($border-radius);
+}
+
+/*** List Group ***/
+.list-group {
+  padding-right: 0;
+}
+
+/*** Modal ***/
+.modal-header {
+	.close {
+		margin: (-$modal-header-padding) auto (-$modal-header-padding) (-$modal-header-padding);
+	}
+}
+.modal-footer {
+	> :not(:first-child) { margin-left: 0; margin-right: 0.25rem; }
+  	> :not(:last-child) { margin-right: 0; margin-left: 0.25rem; }
+}
+
+/*** Nav ***/
+.nav {
+	padding-right: 0;
+}
+
+/*** Navbar ***/
+.navbar-brand {
+	margin-right: 0;
+	margin-left: $navbar-padding-x;
+}
+.navbar-nav {
+	padding-right: 0;
+}
+
+/*** Pagination ***/
+.pagination {
+	padding-right: 0;
+}
+.page-item {
+	&:first-child {
+		.page-link {
+			margin-right: 0;
+			@include border-left-radius(0);
+			@include border-right-radius($border-radius);
+		}
+	}
+	&:last-child {
+		.page-link {
+			@include border-right-radius(0);
+			@include border-left-radius($border-radius);
+		}
+	}
+}
+.page-link {
+	margin-left: 0;
+	margin-right: -1px;
+}
+
+/*** Popover ***/
+.popover {
+	left: auto;
+	right: 0;
+}
+
+/*** Type ***/
+.list-inline {
+  padding-right: 0;
+}
+.list-inline-item {
+  &:not(:last-child) {
+	margin-right: 0;
+	margin-left: $list-inline-padding;
+  }
+}
+
+
+/*** Table ***/
+.table {
+	th {
+		text-align: initial;
+	}
+}

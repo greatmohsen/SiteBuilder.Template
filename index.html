@@ -1,0 +1,108 @@
+<include name="layouts/header.html" />
+
+<div class="container">
+	<form class="quicksearch" action="/site/search" dynamic-search auto-show>
+		<div class="form-group">
+			<div class="input-group quicksearch-query">
+				<input type="text" name="q" class="form-control quicksearch-query-input" maxlength="100" ng-model="query" ng-model-options="{debounce:500}" placeholder="جستجو کنید...">
+				<div class="input-group-append">
+					<button class="btn btn-primary quicksearch-query-button">
+						<i class="fa fa-fw fa-search"></i>
+					</button>
+				</div>
+			</div>
+			<div class="quicksearch-items d-none" ng-class="{'d-none': !items.length}">
+				<div class="quicksearch-item" ng-repeat="item in items">
+					<div class="quicksearch-item-image" ng-show="item.image">
+						<a ng-href="{{item.url}}" class="quicksearch-item-image-link">
+							<img ng-src="{{item.image}}?m=crop&w=100&h=100&q=high" class="quicksearch-item-image-element">
+						</a>
+					</div>
+					<h4 class="quicksearch-item-title">
+						<a ng-href="{{item.url}}" class="quicksearch-item-link">
+							<span ng-bind="item.title"></span>
+						</a>
+					</h4>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<!--carousel-->
+<!-- <widget type="gallery" name="slider" section="صفحه‌ی نخست">
+	<div class="container my-5">
+		<div class="owl-carousel" options="{ items: 1, autoHeight: true }">
+			<loop src="@@items">
+				<div class="owl-item">
+					<a href="@@url">
+						<img src="@@image?m=thumb&w=1340&h=550&q=high" alt="@@description" class="img-fluid">
+					</a>
+				</div>
+			</loop>
+			<if terms="@@items.empty()">
+				<div class="owl-item">
+					<img src="//placehold.it/1340x550.png" class="img-fluid">
+				</div>
+			</if>
+		</div>
+	</div>
+</widget> -->
+<!--/carousel-->
+
+<!--contents-->
+<!-- <widget type="contentlist" name="contents" section="صفحه‌ی نخست">
+	<div class="container">
+		<if terms="@@user.admin">
+			<a href="@@editurl" class="btn btn-sm btn-primary edit-link edit-link-widget">
+				<i class="fa fa-pencil"></i>
+				ویرایش تنظیمات
+			</a>
+			<a href="@@addurl" class="btn btn-sm btn-success add-link add-link-widget" target="_blank">
+				<i class="fa fa-plus"></i>
+				افزودن
+			</a>
+		</if>
+		<div class="row">
+			<loop src="@@items">
+				<div class="col-md-3 col-sm-6">
+					<if terms="@@image.exists()">
+						<a href="@@url">
+							<img src="@@image?m=crop&w=360&h=240&q=high" alt="@@title" class="img-fluid center-block">
+						</a>
+					</if>
+					<h3>
+						<a href="@@url">
+							@@title
+						</a>
+					</h3>
+					<p>@@description</p>
+					<if terms="@@user.admin">
+						<a href="@@editurl" class="btn btn-sm btn-primary edit-link edit-link-widget">
+							<i class="fa fa-pencil"></i>
+							ویرایش
+						</a>
+					</if>
+				</div>
+			</loop>
+		</div>
+	</div>
+</widget> -->
+<!--/contents-->
+
+<!--intro-->
+<!-- <widget type="content" name="intro" section="صفحه‌ی نخست">
+	<div class="container">
+		<h3>@@title</h3>
+		<p>@@description</p>
+		<if terms="@@user.admin">
+			<a href="@@editurl" class="btn btn-sm btn-primary edit-link edit-link-widget">
+				<i class="fa fa-pencil"></i>
+				ویرایش
+			</a>
+		</if>
+	</div>
+</widget> -->
+<!--/intro-->
+
+<include name="layouts/footer.html" />

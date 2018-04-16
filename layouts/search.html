@@ -1,0 +1,62 @@
+<include name="layouts/header.html" />
+
+<!--main-->
+<main class="search-container" itmeprop="mainEntity" itemscope itemtype="http://schema.org/WebPage">
+	<div class="container">
+		<div class="row">
+			<div class="d-none d-lg-block col-lg-1 col-xl-2"></div>
+			<div class="col-md-12 col-lg-10 col-xl-8">
+				<div class="search-context">
+					<h1 class="search-title" itemprop="headline">
+						@@title
+					</h1>
+					<if terms="@@tag.empty()">
+						<form method="get" action="/site/search" class="search-form">
+							<div class="form-group search-query">
+								<div class="input-group search-query-group">
+									<input type="text" name="q" class="form-control search-query-input" placeholder="این‌جا بنویسید..." value="@@query">
+									<div class="input-group-append">
+										<button class="btn btn-primary search-query-submit">
+											جستجو
+										</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</if>
+					<if terms="@@result.any()">
+						<div class="search-result">
+							<loop src="@@result">
+								<div class="search-item" itemprop="mentions" itemscope itemtype="http://schema.org/Thing">
+									<h2 class="search-item-title" itemprop="name">
+										<a href="@@url" class="search-item-link" itemprop="url mainEntityOfPage">
+											@@title
+										</a>
+									</h2>
+									<span class="search-item-url">
+										@@url
+									</span>
+									<if terms="@@description.exists()">
+										<p class="search-item-description" itemprop="description">
+											@@description
+										</p>
+									</if>
+									<hr class="search-item-separator">
+								</div>
+							</loop>
+							<include name="layouts/pager.html" />
+						</div>
+					</if>
+					<if terms="@@query.exists() && @@result.empty()">
+						<div class="search-empty">
+							<mark>جستجو نتیجه ای نداشت!</mark>
+						</div>
+					</if>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+<!--/main-->
+
+<include name="layouts/footer.html" />

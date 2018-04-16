@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa" ng-app="siteBuilder.public">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>@@metatitle</title>
+		<meta name="keywords" content="@@metakeywords">
+		<meta name="description" content="@@metadescription">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="@@theme.fonts?family=persian&family=fontawesome">
+		<link rel="stylesheet" href="@@theme/css/bootstrap.css">
+		<link rel="stylesheet" href="@@theme/css/bootstrap.rtl.css">
+		<link rel="stylesheet" href="@@theme/css/magnific.popup.css">
+		<link rel="stylesheet" href="@@theme/css/owl.carousel.css">
+		<link rel="stylesheet" href="@@theme/css/app.css">
+		<link rel="canonical" href="@@canonicalurl">
+		@@config.verification
+	</head>
+	<body ng-class="{'no-scroll':no_scroll}" itemscope itemtype="http://schema.org/WebPage">
+
+		<!--navigation-->
+		<if terms="@@ismobiledevice">
+			<include name="layouts/navigations/offcanvas.html" />
+		</if>
+		<if terms="@@ismobiledevice.false()">
+			<include name="layouts/navigations/navbar.html" />
+		</if>
+		<!--/navigation-->
+
+		<if terms="@@user.admin">
+			<div class="modal fade" tabindex="-1" role="dialog" edit-dialog>
+				<div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+						بارگذاری...
+					</div>
+				</div>
+			</div>
+		</if>

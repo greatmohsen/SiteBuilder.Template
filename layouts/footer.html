@@ -1,0 +1,136 @@
+		<!--footer-->
+		<footer class="footer-container">
+			<div class="container">
+				<div class="row">
+					<widget type="posts" name="footer:posts" section="پاورقی">
+						<div class="col-md-6">
+							<div class="footer-posts">
+								<h3 class="footer-posts-title">
+									@@title
+								</h3>
+								<if terms="@@items.any()">
+									<ul class="footer-posts-list">
+										<loop src="@@items">
+											<li class="footer-posts-item">
+												<a href="@@url">@@title</a>
+											</li>
+										</loop>
+									</ul>
+								</if>
+								<if terms="@@items.empty()">
+									<div class="footer-posts-empty">
+										موردی برای نمایش وجود ندارد.
+									</div>
+								</if>
+								<if terms="@@user.admin">
+									<a href="@@editurl" class="btn btn-sm btn-primary edit-link edit-link-widget footer-posts-edit">
+										<i class="fa fa-pencil"></i>
+										ویرایش
+									</a>
+								</if>
+							</div>
+						</div>
+					</widget>
+					<widget type="subscription" name="footer:subscription" section="پاورقی">
+						<div class="col-md-6 col-lg-3">
+							<div class="footer-subscription">
+								<form name="footersubscription" class="footer-subscription-form" ng-submit="footersubscription.$valid && submit()" eval="collect('@@label')" subscription dynamic-form auto-show novalidate>
+									<h3 class="footer-subscription-title">
+										@@title
+									</h3>
+									<scope name="footer-subscription">
+										<include name="layouts/validation.html" />
+									</scope>
+									<div class="alert alert-success footer-subscription-succeed" ng-show="succeed">
+										<span ng-bind="succeed.description"></span>
+									</div>
+									<div class="form-group footer-subscription-name">
+										<input type="text" name="name" ng-model="model.name" class="form-control" placeholder="نام و نام خانوادگی" ng-disabled="progress" required>
+										<div class="validation-inline footer-subscription-inline-error text-danger" ng-messages="footersubscription.name.$error" ng-show="footersubscription.$submitted || footersubscription.name.$dirty">
+											<span ng-message="required">
+												نام و نام خانوادگی را بنویسید.
+											</span>
+											<span ng-message="server">
+												<span ng-bind="validation.name"></span>
+											</span>
+										</div>
+									</div>
+									<div class="form-group footer-subscription-email">
+										<input type="text" name="email" ng-model="model.email" class="form-control" placeholder="پست الکترونیک" ng-disabled="progress">
+										<div class="validation-inline footer-subscription-inline-error text-danger" ng-messages="footersubscription.email.$error" ng-show="footersubscription.$submitted || footersubscription.email.$dirty">
+											<span ng-message="server">
+												<span ng-bind="validation.email"></span>
+											</span>
+										</div>
+									</div>
+									<div class="form-group footer-subscription-mobile">
+										<input type="text" name="mobile" ng-model="model.mobile" class="form-control" placeholder="شماره موبایل" ng-disabled="progress">
+										<div class="validation-inline footer-subscription-inline-error text-danger" ng-messages="footersubscription.mobile.$error" ng-show="footersubscription.$submitted || footersubscription.mobile.$dirty">
+											<span ng-message="server">
+												<span ng-bind="validation.mobile"></span>
+											</span>
+										</div>
+									</div>
+									<button class="btn btn-sm btn-success footer-subscription-submit" ng-disabled="progress">
+										ثبت‌نام
+									</button>
+									<if terms="@@user.admin">
+										<a href="@@editurl" class="btn btn-sm btn-primary edit-link edit-link-widget footer-subscription-edit">
+											<i class="fa fa-pencil"></i>
+											ویرایش
+										</a>
+									</if>
+									<div class="footer-subscription-loading" ng-show="progress">
+										<i class="fa fa-refresh fa-spin fa-fw"></i>
+										کمی صبر کنید...
+									</div>
+								</form>
+							</div>
+						</div>
+					</widget>
+					<widget type="content" name="footer:contact" section="پاورقی">
+						<div class="col-md-6 col-lg-3">
+							<div class="footer-contact">
+								<h3 class="footer-contact-title">
+									@@title
+								</h3>
+								<div class="footer-contact-description">
+									@@description
+								</div>
+								<if terms="@@user.admin">
+									<a href="@@editurl" class="btn btn-sm btn-primary edit-link edit-link-widget footer-contact-edit">
+										<i class="fa fa-pencil"></i>
+										ویرایش
+									</a>
+								</if>
+							</div>
+						</div>
+					</widget>
+				</div>
+			</div>
+		</footer>
+		<!--/footer-->
+
+		<!--copyright-->
+		<div class="copyright-container">
+			<div class="container">
+				<span class="copyright-text">
+					@@config.copyright
+				</span>
+			</div>
+		</div>
+		<!--/copyright-->
+
+		<script type="text/javascript" src="@@theme/js/bootstrap.js"></script>
+		<script type="text/javascript" src="@@theme/js/magnific.popup.js"></script>
+		<script type="text/javascript" src="@@theme/js/owl.carousel.js"></script>
+		<script type="text/javascript" src="@@theme/js/app.js"></script>
+		<script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=@@analyticsid" async></script>
+		<script type="text/javascript">
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', '@@analyticsid');
+		</script>
+	</body>
+</html>

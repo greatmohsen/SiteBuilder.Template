@@ -1,0 +1,40 @@
+
+@for $i from 1 through 12 {
+    .columns-count-#{$i} { column-count: #{$i}; }
+}
+
+@include media-breakpoint-up(xs) {
+    @for $i from 1 through 12 {
+        .columns-count-xs-#{$i} { column-count: #{$i}; }
+    }
+}
+
+@include media-breakpoint-up(sm) {
+    @for $i from 1 through 12 {
+        .columns-count-sm-#{$i} { column-count: #{$i}; }
+    }
+}
+
+@include media-breakpoint-up(md) {
+    @for $i from 1 through 12 {
+        .columns-count-md-#{$i} { column-count: #{$i}; }
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    @for $i from 1 through 12 {
+        .columns-count-lg-#{$i} { column-count: #{$i}; }
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    @for $i from 1 through 12 {
+        .columns-count-xl-#{$i} { column-count: #{$i}; }
+    }
+}
+
+@include media-breakpoint-up(xxl) {
+    @for $i from 1 through 12 {
+        .columns-count-xxl-#{$i} { column-count: #{$i}; }
+    }
+}

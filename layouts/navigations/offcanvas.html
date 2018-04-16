@@ -1,0 +1,94 @@
+<widget type="menu" name="navigation" section="سربرگ">
+    <nav class="navbar navbar-light bg-light" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <div class="container">
+            <div class="offcanvas" navbar-offcanvas>
+                <div class="offcanvas-overlay"></div>
+                <button type="button" class="navbar-toggler" navbar-offcanvas-toggle>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div id="offcanvas-@@id" class="offcanvas-sidebar">
+                    <div class="offcanvas-header">
+                        <a class="offcanvas-brand" href="javascript:;">
+                            @@title
+                        </a>
+                        <button type="button" class="offcanvas-close">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                    <ul class="offcanvas-nav" role="menu">
+                        <loop src="@@items" recursive="@@subset" max-depth="4">
+                            <li class="offcanvas-nav-item @@active" data-subset="@@subset.count()">
+                                <a href="@@url" class="offcanvas-nav-link" itemprop="url" target="@@target">
+                                    @@title
+                                </a>
+                                <if terms="@@subset.any()">
+                                    <button type="button" class="offcanvas-nav-toggle">
+                                        <i class="fa offcanvas-nav-toggle-icon"></i>
+                                    </button>
+                                    <ul class="offcanvas-nav-subset offcanvas-nav-subset-@@depth" role="menu">
+                                        @@recursive
+                                    </ul>
+                                </if>
+                            </li>
+                        </loop>
+                    </ul>
+                </div>
+            </div>
+            <if terms="@@user.exists()">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a href="/user" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            @@user
+                        </a>
+                        <div class="dropdown-menu">
+                            <if terms="@@user.reseller">
+                                <a href="/reseller" class="dropdown-item">
+                                    <i class="fa ml-2 mt-1 fa-globe"></i>
+                                    بخش نمایندگی
+                                </a>
+                            </if>
+                            <if terms="@@user.admin">
+                                <a href="/admin" class="dropdown-item">
+                                    <i class="fa ml-2 mt-1 fa-gear"></i>
+                                    بخش مدیریت
+                                </a>
+                            </if>
+                            <a href="/user" class="dropdown-item">
+                                <i class="fa ml-2 mt-1 fa-user"></i>
+                                بخش کاربری
+                            </a>
+                            <a href="/user/profile" class="dropdown-item">
+                                <i class="fa ml-2 mt-1 fa-pencil"></i>
+                                ویرایش مشخصات
+                            </a>
+                            <a href="/user/profile/changepassword" class="dropdown-item">
+                                <i class="fa ml-2 mt-1 fa-lock"></i>
+                                تغییر رمز عبور
+                            </a>
+                            <a href="/site/signout" class="dropdown-item">
+                                <i class="fa ml-2 mt-1 fa-power-off"></i>
+                                خروج
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </if>
+            <if terms="@@user.empty()">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a href="@@users.signin" class="nav-link">
+                            ورود
+                        </a>
+                    </li>
+                    <if terms="@@users.signup.enabled">
+                        <li class="nav-item">
+                            <a href="@@users.signup" class="nav-link">
+                                ثبت‌نام
+                            </a>
+                        </li>
+                    </if>
+                </ul>
+            </if>
+        </div>
+    </nav>
+</widget>
