@@ -1,13 +1,13 @@
 <include name="layouts/header.html" />
 
 <!--main-->
-<main class="subscription-container" itemprop="mainEntity">
+<main class="page-container subscription-container" itemprop="mainEntity">
 	<div class="container">
-		<div class="subscription-context">
-			<h1 class="subscription-title" itemprop="headline">
+		<div class="page-context subscription-context">
+			<h1 class="page-title subscription-title" itemprop="headline">
 				اشتراک خبرنامه
 			</h1>
-			<hr class="subscription-separator">
+			<hr class="page-separator subscription-separator">
 			<form name="subscription" class="subscription-form" ng-submit="subscription.$valid && submit()" subscription dynamic-form auto-show novalidate>
 				<scope name="subscription">
 					<include name="layouts/validation.html" />
@@ -58,7 +58,7 @@
 							</div>
 						</div>
 					</div>
-					<hr class="subscription-separator">
+					<hr class="page-separator subscription-separator">
 					<div class="row form-group">
 						<div class="col-md-3"></div>
 						<div class="col-md-9 col-lg-6">
@@ -68,7 +68,7 @@
 							<button type="button" class="btn btn-link subscription-cancel" ng-click="reset()" click-confirm="همه‌ی اطلاعات نوشته شده، حذف می‌شوند. آیا مطمئن هستید؟">
 								انصراف
 							</button>
-							<div class="subscription-loading" ng-show="progress">
+							<div class="page-loading subscription-loading" ng-show="progress">
 								<i class="fa fa-refresh fa-spin fa-fw"></i>
 								کمی صبر کنید...
 							</div>

@@ -1,13 +1,13 @@
 <include name="layouts/header.html" />
 
 <!--main-->
-<main class="store-compare-container" itemprop="mainEntity" itemscope itemtype="">
+<main class="page-container store-container store-compare-container" itemprop="mainEntity" itemscope itemtype="">
 	<div class="container">
-		<div class="store-compare-context">
-			<h1 class="store-compare-title" itemprop="headline">
+		<div class="page-context store-context store-compare-context">
+			<h1 class="page-title store-title store-compare-title" itemprop="headline">
 				@@title
 			</h1>
-			<hr class="store-compare-separator">
+			<hr class="page-separator store-separator store-compare-separator">
 			<if terms="@@products.any()">
 				<div class="store-compare-@@products.count()">
 					<div class="store-compare-headers">
@@ -51,7 +51,7 @@
 				</div>
 			</if>
 			<if terms="@@products.empty()">
-				<div class="store-compare-empty">
+				<div class="page-empty store-empty store-compare-empty">
 					هیچ موردی برای مقایسه انتخاب نشده.
 					<br>
 					<a href="/site/products" class="btn btn-sm btn-primary store-compare-back">

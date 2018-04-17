@@ -1,13 +1,13 @@
 <include name="layouts/header.html" />
 
 <!--main-->
-<main class="signup-container" itemprop="mainEntity">
+<main class="page-container signup-container" itemprop="mainEntity">
 	<div class="container">
-		<div class="signup-context">
-			<h1 class="signup-title" itemprop="headline">
+		<div class="page-context signup-context">
+			<h1 class="page-title signup-title" itemprop="headline">
 				ثبت‌نام در وب‌سایت
 			</h1>
-			<hr class="signup-separator">
+			<hr class="page-separator signup-separator">
 			<if terms="@@users.signup.enabled">
 				<form name="signup" class="signup-form" ng-submit="signup.$valid && submit()" eval="collect('@@returnurl')" signup dynamic-form auto-show novalidate>
 					<scope name="signup">
@@ -62,7 +62,7 @@
 								</div>
 							</div>
 						</div>
-						<hr class="signup-separator">
+						<hr class="page-separator signup-separator">
 						<div class="row form-group signup-username">
 							<label for="signup-username" class="col-form-label col-md-3 text-md-left signup-username-label">
 								نام کاربری
@@ -121,7 +121,7 @@
 								</div>
 							</div>
 						</div>
-						<hr class="signup-separator">
+						<hr class="page-separator signup-separator">
 						<div class="row form-group signup-organization">
 							<label for="signup-organization" class="col-form-label col-md-3 text-md-left signup-organization-label">
 								نام شرکت
@@ -174,7 +174,7 @@
 								</div>
 							</div>
 						</div>
-						<hr class="signup-separator">
+						<hr class="page-separator signup-separator">
 						<div class="row form-group signup-country">
 							<label for="signup-country" class="col-form-label col-md-3 text-md-left signup-country-label">
 								کشور
@@ -261,7 +261,7 @@
 								</div>
 							</div>
 						</div>
-						<hr class="signup-separator">
+						<hr class="page-separator signup-separator">
 						<div class="row form-group signup-referrer">
 							<label for="signup-referrer" class="col-form-label col-md-3 text-md-left signup-referrer-label">
 								نحوه‌ی آشنایی
@@ -281,7 +281,7 @@
 								</div>
 							</div>
 						</div>
-						<hr class="signup-separator">
+						<hr class="page-separator signup-separator">
 						<div class="row form-group">
 							<div class="col-md-3"></div>
 							<div class="col-md-9 col-lg-6">
@@ -291,13 +291,13 @@
 								<a href="@@users.signin" class="btn btn-link signup-cancel" click-confirm="همه‌ی اطلاعات نوشته شده، حذف می‌شوند. آیا مطمئن هستید؟">
 									بازگشت
 								</a>
-								<div class="signup-loading" ng-show="progress">
+								<div class="page-loading signup-loading" ng-show="progress">
 									<i class="fa fa-refresh fa-spin fa-fw"></i>
 									کمی صبر کنید...
 								</div>
 							</div>
 						</div>
-						<hr class="signup-separator">
+						<hr class="page-separator signup-separator">
 						<div class="row form-group">
 							<div class="col-md-3"></div>
 							<div class="col-md-9 col-lg-6">

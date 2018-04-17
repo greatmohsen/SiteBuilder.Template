@@ -1,16 +1,16 @@
 <include name="layouts/header.html" />
 
 <!--main-->
-<main class="cart-auth-container">
+<main class="page-container cart-auth-container">
     <div class="container">
-        <div class="cart-auth-context">
-            <h1 class="cart-auth-title">
+        <div class="page-context cart-auth-context">
+            <h1 class="page-title cart-auth-title">
                 @@title
             </h1>
-            <div class="cart-auth-description">
+            <div class="page-description cart-auth-description">
                 ابتدا باید وارد حساب کاربری خود شوید و در صورتی که هنوز عضو وب‌سایت نیستید، گزینه‌ی ثبت‌نام را انتخاب کنید.
             </div>
-            <hr class="cart-auth-separator">
+            <hr class="page-separator cart-auth-separator">
             <form name="auth" class="cart-auth-form" ng-submit="auth.$valid && submit()" eval="collect('@@url')" ng-switch="model.mode" cart-auth dynamic-form auto-show novalidate>
                 <div class="alert alert-success cart-auth-succeed" ng-show="succeed">
                     <span ng-bind="succeed.description"></span>
@@ -42,7 +42,7 @@
                             </div>
                         </div>
                     </div>
-                    <hr class="cart-auth-separator">
+                    <hr class="page-separator cart-auth-separator">
                     <div class="row form-group cart-auth-username" ng-switch-when="signin">
                         <label for="cart-auth-username" class="col-form-label col-md-3 text-md-left cart-auth-username-label">
                             نام کاربری یا موبایل یا پست الکترونیک
@@ -111,7 +111,7 @@
                             </div>
                         </div>
                     </div>
-                    <hr class="cart-auth-separator" ng-switch-when="signup">
+                    <hr class="page-separator cart-auth-separator" ng-switch-when="signup">
                     <div class="row form-group cart-auth-password">
                         <label for="cart-auth-password" class="col-form-label col-md-3 text-md-left cart-auth-password-label">
                             رمز عبور
@@ -158,7 +158,7 @@
                             </div>
                         </div>
                     </div>
-                    <hr class="cart-auth-separator">
+                    <hr class="page-separator cart-auth-separator">
                     <div class="row form-group">
                         <div class="col-md-3"></div>
                         <div class="col-md-9 col-lg-6">
@@ -168,7 +168,7 @@
                             <a href="/site/cart" class="btn btn-link">
                                 بازگشت
                             </a>
-                            <div class="cart-auth-loading" ng-show="progress">
+                            <div class="page-oading cart-auth-loading" ng-show="progress">
                                 <i class="fa fa-refresh fa-spin fa-fw"></i>
                                 کمی صبر کنید...
                             </div>

@@ -1,13 +1,13 @@
 <include name="layouts/header.html" />
 
 <!--main-->
-<main class="search-container" itmeprop="mainEntity" itemscope itemtype="http://schema.org/WebPage">
+<main class="page-container search-container" itmeprop="mainEntity" itemscope itemtype="http://schema.org/WebPage">
 	<div class="container">
 		<div class="row">
 			<div class="d-none d-lg-block col-lg-1 col-xl-2"></div>
 			<div class="col-md-12 col-lg-10 col-xl-8">
-				<div class="search-context">
-					<h1 class="search-title" itemprop="headline">
+				<div class="page-context search-context">
+					<h1 class="page-title search-title" itemprop="headline">
 						@@title
 					</h1>
 					<if terms="@@tag.empty()">
@@ -48,7 +48,7 @@
 						</div>
 					</if>
 					<if terms="@@query.exists() && @@result.empty()">
-						<div class="search-empty">
+						<div class="page-empty search-empty">
 							<mark>جستجو نتیجه ای نداشت!</mark>
 						</div>
 					</if>

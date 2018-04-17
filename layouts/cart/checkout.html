@@ -1,10 +1,10 @@
 <include name="layouts/header.html" />
 
 <!--main-->
-<main class="cart-checkout-container" cart-checkout>
+<main class="page-container cart-checkout-container" cart-checkout>
 	<div class="container">
-		<div class="cart-checkout-context">
-			<h1 class="cart-checkout-title">
+		<div class="page-context cart-checkout-context">
+			<h1 class="page-title cart-checkout-title">
 				@@title
 			</h1>
 			<div ng-hide="loading" auto-show>
@@ -14,10 +14,10 @@
 					</scope>
 				</div>
 				<div ng-show="ready">
-					<div class="cart-checkout-description">
+					<div class="page-description cart-checkout-description">
 						اطلاعات خود را در فرم زیر بنویسید و سپس بر روی دکمه‌ی ثبت کلیک کنید.
 					</div>
-					<hr class="cart-checkout-separator">
+					<hr class="page-separator cart-checkout-separator">
 					<form name="checkout" class="cart-checkout-form" ng-submit="checkout.$valid && submit()" dynamic-form auto-show novalidate>
 						<div class="alert alert-success cart-checkout-succeed" ng-show="succeed">
 							<span ng-bind="succeed.description"></span>
@@ -95,7 +95,7 @@
 									</div>
 								</div>
 							</div>
-							<hr class="cart-checkout-separator" ng-if="shippingRequired()">
+							<hr class="page-separator cart-checkout-separator" ng-if="shippingRequired()">
 							<div class="row form-group cart-checkout-shipping" ng-if="shippingRequired()">
 								<div class="col-md-3"></div>
 								<div class="col-md-9 col-lg-6">
@@ -208,7 +208,7 @@
 									</div>
 								</div>
 							</div>
-							<hr class="cart-checkout-separator">
+							<hr class="page-separator cart-checkout-separator">
 							<div class="row form-group cart-checkout-description-field">
 								<label for="cart-checkout-description" class="col-form-label col-md-3 text-md-left cart-checkout-description-field-label">
 									توضیحات
@@ -225,7 +225,7 @@
 									</div>
 								</div>
 							</div>
-							<hr class="cart-checkout-separator">
+							<hr class="page-separator cart-checkout-separator">
 							<div class="row form-group">
 								<div class="col-lg-3"></div>
 								<div class="col-md-9 col-lg-6">
@@ -245,7 +245,7 @@
 					</form>
 				</div>
 			</div>
-			<div class="cart-loading" ng-show="loading">
+			<div class="page-loading cart-loading" ng-show="loading">
 				<i class="fa fa-refresh fa-spin fa-fw"></i>
 				کمی صبر کنید...
 			</div>

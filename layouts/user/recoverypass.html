@@ -1,13 +1,13 @@
 <include name="layouts/header.html" />
 
 <!--main-->
-<main class="recoverypass-container" itemprop="mainEntity">
+<main class="page-container recoverypass-container" itemprop="mainEntity">
 	<div class="container">
-		<div class="recoverypass-context">
-			<h1 class="recoverypass-title" itemprop="headline">
+		<div class="page-context recoverypass-context">
+			<h1 class="page-title recoverypass-title" itemprop="headline">
 				بازیابی رمز عبور
 			</h1>
-			<hr class="recoverypass-separator">
+			<hr class="page-separator recoverypass-separator">
 			<div auto-show>
 				<form name="recoverypass" class="recoverypass-form recoverypass-form1" ng-submit="recoverypass.$valid && submit()" ng-hide="recoveryStep2" recoverypass dynamic-form auto-show novalidate>
 					<scope name="recoverypass">
@@ -29,7 +29,7 @@
 							</div>
 						</div>
 					</div>
-					<hr class="recoverypass-separator">
+					<hr class="page-separator recoverypass-separator">
 					<div class="row form-group">
 						<div class="col-md-3"></div>
 						<div class="col-md-9 col-lg-6">
@@ -45,7 +45,7 @@
 							</div>
 						</div>
 					</div>
-					<hr class="recoverypass-separator">
+					<hr class="page-separator recoverypass-separator">
 					<div class="row form-group">
 						<div class="col-md-3"></div>
 						<div class="col-md-9 col-lg-6">
@@ -115,7 +115,7 @@
 								</div>
 							</div>
 						</div>
-						<hr class="recoverypass-separator">
+						<hr class="page-separator recoverypass-separator">
 						<div class="row form-group">
 							<div class="col-md-3"></div>
 							<div class="col-md-9 col-lg-6">
@@ -125,13 +125,13 @@
 								<button type="button" class="btn btn-link recoverypass-cancel" ng-click="back()" click-confirm="آیا مطمئن هستید؟">
 									بازگشت
 								</button>
-								<div class="recoverypass-loading" ng-show="progress">
+								<div class="page-loading recoverypass-loading" ng-show="progress">
 									<i class="fa fa-refresh fa-spin fa-fw"></i>
 									کمی صبر کنید...
 								</div>
 							</div>
 						</div>
-						<hr class="recoverypass-separator">
+						<hr class="page-separator recoverypass-separator">
 						<div class="row form-group">
 							<div class="col-md-3"></div>
 							<div class="col-md-9 col-lg-6">

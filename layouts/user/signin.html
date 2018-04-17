@@ -1,13 +1,13 @@
 <include name="layouts/header.html" />
 
 <!--main-->
-<main class="signin-container" itemprop="mainEntity">
+<main class="page-container signin-container" itemprop="mainEntity">
 	<div class="container">
-		<div class="signin-context">
-			<h1 class="signin-title" itemprop="headline">
+		<div class="page-context signin-context">
+			<h1 class="page-title signin-title" itemprop="headline">
 				ورود به وب‌سایت
 			</h1>
-			<hr class="signin-separator">
+			<hr class="page-separator signin-separator">
 			<form method="post" name="signin" class="signin-form" ng-submit="signin.$valid && submit()" eval="collect('@@returnurl')" signin dynamic-form auto-show novalidate>
 				<scope name="signin">
 					<include name="layouts/validation.html" />
@@ -58,20 +58,20 @@
 						</div>
 					</div>
 				</div>
-				<hr class="signin-separator">
+				<hr class="page-separator signin-separator">
 				<div class="row form-group">
 					<div class="col-md-3"></div>
 					<div class="col-md-9 col-lg-6">
 						<button class="btn btn-lg btn-success signin-submit" ng-disabled="progress">
 							ورود به وب‌سایت
 						</button>
-						<div class="signin-loading" ng-show="progress">
+						<div class="page-loading signin-loading" ng-show="progress">
 							<i class="fa fa-refresh fa-spin fa-fw"></i>
 							کمی‌صبر‌کنید...
 						</div>
 					</div>
 				</div>
-				<hr class="signin-separator">
+				<hr class="page-separator signin-separator">
 				<div class="row form-group">
 					<div class="col-md-3"></div>
 					<div class="col-md-9 col-lg-6">

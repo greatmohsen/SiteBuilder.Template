@@ -1,10 +1,10 @@
 <include name="layouts/header.html" />
 
 <!--main-->
-<main class="cart-payment-container" cart-payment>
+<main class="page-container cart-payment-container" cart-payment>
 	<div class="container">
-		<div class="cart-payment-context" ng-switch="model.mode">
-			<h1 class="cart-payment-title">
+		<div class="page-context cart-payment-context" ng-switch="model.mode">
+			<h1 class="page-title cart-payment-title">
 				@@title
 			</h1>
 			<div ng-hide="loading" auto-show>
@@ -14,10 +14,10 @@
 					</scope>
 				</div>
 				<div ng-show="ready">
-					<div class="cart-payment-description">
+					<div class="page-description cart-payment-description">
 						لطفا از طریق فرم زیر اقدام به پرداخت سفارش کنید.
 					</div>
-					<hr class="cart-payment-separator">
+					<hr class="page-separator cart-payment-separator">
 					<div class="cart-payment-paid" ng-show="paid">
 						<div class="alert alert-success cart-payment-paid-description">
 							این سفارش قبلا پرداخت شده است.
@@ -43,7 +43,7 @@
 										سررسید پردخت: {{model.due_date.subtract}}
 									</span>
 								</div>
-								<hr class="cart-payment-separator">
+								<hr class="page-separator cart-payment-separator">
 								<div class="cart-payment-method">
 									<h4 class="cart-payment-method-title">
 										<span class="badge badge-primary cart-payment-method-title-badge">
@@ -79,7 +79,7 @@
 										</label>
 									</div>
 								</div>
-								<hr class="cart-payment-separator" ng-show="model.mode">
+								<hr class="page-separator cart-payment-separator" ng-show="model.mode">
 								<div class="cart-payment-bank-form" ng-switch-when="bank">
 									<h4 class="cart-payment-bank-title">
 										<span class="badge badge-primary cart-payment-bank-title-badge">
@@ -111,7 +111,7 @@
 									</div>
 								</div>
 								<div class="cart-payment-transfer" ng-switch-when="bank" ng-show="model.gateway_id">
-									<hr class="cart-payment-separator">
+									<hr class="page-separator cart-payment-separator">
 									<h4 class="cart-payment-transfer-title">
 										<span class="badge badge-primary cart-payment-transfer-title-badge">
 											4
@@ -153,7 +153,7 @@
 									</div>
 								</div>
 								<div class="cart-payment-fish" ng-switch-when="bank" ng-show="model.gateway_id">
-									<hr class="cart-payment-separator">
+									<hr class="page-separator cart-payment-separator">
 									<h4 class="cart-payment-fish-title">
 										<span class="badge badge-primary cart-payment-fish-title-badge">
 											5
@@ -261,7 +261,7 @@
 										ثبت درخواست
 									</button>
 								</div>
-								<div class="cart-payment-loading" ng-show="loading">
+								<div class="page-loading cart-payment-loading" ng-show="loading">
 									<i class="fa fa-refresh fa-spin fa-fw"></i>
 									کمی صبر کنید...
 								</div>
@@ -270,7 +270,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="cart-loading" ng-show="loading">
+			<div class="page-loading cart-loading" ng-show="loading">
 				<i class="fa fa-refresh fa-spin fa-fw"></i>
 				کمی صبر کنید...
 			</div>
