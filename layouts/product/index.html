@@ -179,10 +179,7 @@
 			</div>
 			<if terms="@@description.exists()">
 				<div class="product-description">
-					<hr class="product-description-separator">
-					<h4 class="product-description-headline">
-						توضیحات اجمالی
-					</h4>
+					<hr class="page-separator product-separator product-description-separator">
 					<p class="product-description-content" itemprop="description">
 						@@description
 					</p>
@@ -190,16 +187,31 @@
 			</if>
 			<widget type="products" name="products:relates" terms="@@items.any()">
 				<div class="product-relates">
-					<hr class="product-relates-separator">
+					<hr class="page-separator product-separator product-relates-separator">
 					<h4 class="product-relates-title">
 						@@title
 					</h4>
 					<div class="product-relates-items">
 						<div class="row">
 							<loop src="@@items">
-								<div class="col-sm-4">
+								<div class="col-6 col-sm-4 col-md-3 col-xl-2">
 									<div class="product-relates-item">
-										@@title
+										<a href="@@url" class="product-relates-item-image">
+											<img src='@@image.default("/site/resources/images/empty.png")?m=crop&w=320&h=240&q=high' class="img-fluid product-relates-item-image-element">
+										</a>
+										<h5 class="product-relates-item-title">
+											<a href="@@url" class="product-relates-item-link">
+												@@title
+											</a>
+										</h5>
+										<span class="product-relates-item-price">
+											@@price تومان
+										</span>
+										<if terms="@@priceprice.exists()">
+											<span class="product-relates-item-compare-price">
+												@@compareprice تومان
+											</span>
+										</if>
 									</div>
 								</div>
 							</loop>
@@ -215,13 +227,13 @@
 			</widget>
 			<div class="product-details" data-tabs="auto">
 				<ul class="nav nav-tabs product-details-tabs" role="tablist">
-					<if terms="@@content.exists()">
+					<loop src="@@contents">
 						<li class="nav-item product-details-tab">
-							<a role="button" class="nav-link product-details-tab-link" data-toggle="tab" data-target="#product-content">
-								توضیحات
+							<a role="button" class="nav-link product-details-tab-link" data-toggle="tab" data-target="#product-content-@@index">
+								@@name
 							</a>
 						</li>
-					</if>
+					</loop>
 					<if terms="@@fields.any()">
 						<li class="nav-item product-details-tab">
 							<a role="button" class="nav-link product-details-tab-link" data-toggle="tab" data-target="#product-fields">
@@ -238,13 +250,13 @@
 					</if>
 				</ul>
 				<div class="tab-content">
-					<if terms="@@content.exists()">
-						<div class="tab-pane" id="product-content">
+					<loop src="@@contents">
+						<div class="tab-pane" id="product-content-@@index">
 							<div class="product-content figure-content">
-								@@content
+								@@value
 							</div>
 						</div>
-					</if>
+					</loop>
 					<if terms="@@fields.any()">
 						<div class="tab-pane" id="product-fields">
 							<div class="product-fields">
@@ -321,7 +333,7 @@
 								<if terms="@@comments.enabled">
 									<div class="product-commenting">
 										<if terms="@@comments.any()">
-											<hr class="product-commenting-separator">
+											<hr class="page-separator product-separator product-commenting-separator">
 										</if>
 										<h3 class="product-commenting-title">
 											دیدگاه خود را بنویسید
