@@ -1,0 +1,31 @@
+<include name="layouts/header.html" />
+
+<!--main-->
+<main class="page-container packages-container" itemprop="mainEntity">
+    <div class="container">
+        <div class="page-context packages-context">
+            <h1 class="page-title packages-title" itemprop="headline">
+                @@title
+            </h1>
+            <p class="form-text text-muted page-description packages-description">
+                no desc...
+            </p>
+            <hr class="page-separator packages-separator">
+            <scope context="@@reseller.packages">
+                <loop src="@@items">
+                    <div class="row">
+                        <div class="col">
+                            <h4>@@title</h4>
+                            <a href="/templates?package=@@id">
+                                ثبت‌نام
+                            </a>
+                        </div>
+                    </div>
+                </loop>
+            </scope>
+        </div>
+    </div>
+</main>
+<!--/main-->
+
+<include name="layouts/footer.html" />

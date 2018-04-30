@@ -1,0 +1,394 @@
+<include name="layouts/header.html" />
+
+<!--main-->
+<main class="page-container templates-container" itemprop="mainEntity">
+    <div class="container" templates>
+        <div class="page-context templates-context">
+            <h1 class="page-title templates-title" itemprop="headline">
+                @@title
+            </h1>
+            <div ng-hide="loading" auto-show>
+                <p class="form-text text-muted page-description packages-description">
+                    no desc...
+                </p>
+                <hr class="page-separator templates-separator">
+                <div ng-hide="model.template_id">
+                    <scope context="@@reseller.templates">
+                        <if terms="@@items.any()">
+                            <div class="templates-list">
+                                <scope context="@@reseller.categories">
+                                    <ul class="nav nav-pills templates-categories">
+                                        <li class="nav-item templates-category">
+                                            <a href="/templates" class="nav-link templates-category-link" ng-click="selectCategory(null, $event)" ng-class="{'active':model.category==null}">
+                                                همه
+                                            </a>
+                                        </li>
+                                        <loop src="@@items">
+                                            <li class="nav-item templates-category" ng-show="filterCategory('@@value')">
+                                                <a href="/templates?category=@@value" class="nav-link templates-category-link" ng-click="selectCategory('@@value', $event)" ng-class="{'active':model.category=='@@value'}">
+                                                    @@title
+                                                </a>
+                                            </li>
+                                        </loop>
+                                    </ul>
+                                </scope>
+                                <div class="row">
+                                    <loop src="@@items">
+                                        <div class="col-md-6 col-xl-4 mt-5" ng-show="filter('@@categories')">
+                                            <div class="templates-item">
+                                                <div class="templates-item-image">
+                                                    <img src="@@image?m=thumb&w=600&h=450&q=veryhigh" alt="@@title" class="img-fluid templates-item-image-element">
+                                                </div>
+                                                <h4 class="templates-item-title">
+                                                    @@title
+                                                </h4>
+                                                <if terms="@@description.exists()">
+                                                    <p class="templates-item-description">
+                                                        @@description
+                                                    </p>
+                                                </if>
+                                                <button class="btn btn-success templates-item-select" ng-click="select(@@id, '@@categories')">
+                                                    انتخاب قالب
+                                                </button>
+                                                <a ng-href="@@url{{model.category ? '?category=' + model.category : ''}}" class="btn btn-link templates-item-details">
+                                                    مشاهده
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </loop>
+                                </div>
+                            </div>
+                        </if>
+                        <if terms="@@items.empty()">
+                            <div class="templates-empty">
+                                هیچ قالبی وجود ندارد.
+                            </div>
+                        </if>
+                    </scope>
+                </div>
+                <form name="form" class="templates-form" ng-show="model.template_id && !succeed" ng-submit="form.$valid && submit()" ng-switch="model.mode" dynamic-form novalidate>
+                    <scope name="templates-form">
+                        <include name="layouts/validation.html" />
+                    </scope>
+                    <div class="row form-group templates-form-title my-4">
+                        <label for="templates-form-title" class="col-form-label col-md-3 text-md-left templates-form-title-label">
+                            <span class="d-block mt-1">
+                                عنوان وب‌سایت
+                            </span>
+                        </label>
+                        <div class="col-md-9 col-lg-6">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-fw fa-pencil"></i>
+                                    </span>
+                                </div>
+                                <input type="text" id="templates-form-title" name="title" class="form-control templates-form-title-input" ng-model="model.title" ng-disabled="progress" required>
+                            </div>
+                            <div class="form-text text-muted mt-2 small">
+                                مانند: شرکت ساختگی، فروشگاه ساختگی، وب‌سایت شخصی ساختگی و...
+                            </div>
+                            <div class="validation-inline templates-form-inline-error text-danger" ng-messages="form.title.$error" ng-show="form.$submitted || form.title.$dirty">
+                                <span ng-message="required">
+                                    عنوان وب‌سایت را بنویسید.
+                                </span>
+                                <span ng-message="server">
+                                    <span ng-bind="validation.title"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="templates-separator" ng-show="categories.length > 1">
+                    <div class="row form-group templates-form-categories mb-md-5" ng-show="categories.length > 1">
+                        <label class="col-form-label col-md-3 text-md-left"></label>
+                        <div class="col-md-9 col-lg-6">
+                            <scope context="@@reseller.categories">
+                                <h5 class="templates-form-categories-title mt-3 mb-2">
+                                    نوع وب‌سایت شما:
+                                </h5>
+                                <div class="templates-description form-text text-muted mb-4">
+                                    انتخاب نوع وب‌سایت تغییری در امکانات ایجاد نخواهد کرد و تنها اطلاعات پیش‌فرض مربوط به وب‌سایت شما را مشخص می‌کند. بعد از ایجاد وب‌سایت نیز امکان ویرایش آن توسط شما وجود دارد.
+                                </div>
+                                <loop src="@@items">
+                                    <div class="custom-control custom-radio my-1 templates-form-category" ng-show="categories.indexOf('@@value') > -1 && filterCategory('@@value')">
+                                        <input type="radio" name="category" id="category-@@value" class="custom-control-input templates-form-category-input" value="@@value" ng-model="model.category" ng-disabled="progress" required>
+                                        <label for="category-@@value" class="custom-control-label templates-form-category-label">
+                                            @@title
+                                        </label>
+                                    </div>
+                                </loop>
+                                <div class="validation-inline templates-form-inline-error text-danger" ng-messages="form.category.$error" ng-show="form.$submitted || form.category.$dirty">
+                                    <span ng-message="required">
+                                        نوع وب‌سایت را انتخاب کنید.
+                                    </span>
+                                    <span ng-message="server">
+                                        <span ng-bind="validation.category"></span>
+                                    </span>
+                                </div>
+                            </scope>
+                        </div>
+                    </div>
+                    <if terms="@@user.empty()">
+                        <hr class="templates-separator">
+                        <div class="row form-group mt-5 mb-4" ng-form="auth">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-9 col-lg-6">
+                                <div class="templates-form-mode">
+                                    <h5 class="templates-form-mode-question">
+                                        <i class="fa fa-user"></i>
+                                        آیا قبلا در پرتال ثبت‌نام کردید؟
+                                    </h5>
+                                    <div class="custom-control custom-radio templates-form-mode-signup my-2">
+                                        <input type="radio" id="templates-form-mode-signup" name="mode" value="signup" class="custom-control-input templates-form-mode-signup-input" ng-model="model.mode" ng-disabled="progress">
+                                        <label class="custom-control-label templates-form-mode-signup-label" for="templates-form-mode-signup">
+                                            خیر؛ کاربر جدید هستم.
+                                        </label>
+                                    </div>
+                                    <div class="custom-control custom-radio templates-form-mode-signin my-2">
+                                        <input type="radio" id="templates-form-mode-signin" name="mode" value="signin" class="custom-control-input templates-form-mode-signin-input" ng-model="model.mode" ng-disabled="progress">
+                                        <label class="custom-control-label templates-form-mode-signin-label" for="templates-form-mode-signin">
+                                            بله.
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row templates-form-signin-description mb-3" ng-switch-when="signin">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-9 col-lg-6">
+                                <div class="templates-description form-text text-muted">
+                                    اگر قبلا در سامانه پرتال عضو شدید، اطلاعات کاربری شما موجود می‌باشد و نیازی به ثبت‌نام نیست. اطلاعات ورود خود را بنویسید و بر روی دکمه ایجاد وب‌سایت کلیک کنید.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group templates-form-username" ng-switch-when="signin">
+                            <label for="templates-form-username" class="col-form-label col-md-3 text-md-left templates-form-username-label">
+                                نام کاربری یا موبایل یا پست الکترونیک
+                            </label>
+                            <div class="col-md-9 col-lg-6">
+                                <div class="input-group templates-form-username-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-fw fa-user"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" id="templates-form-username" name="username" class="form-control templates-form-username-input" ng-model="model.username" dir="ltr" placeholder="e.g. mohsen" ng-disabled="progress" required>
+                                </div>
+                                <div class="validation-inline templates-form-inline-error text-danger" ng-messages="form.username.$error" ng-show="form.$submitted || form.username.$dirty">
+                                    <span ng-message="required">
+                                        نام کاربری را بنویسید.
+                                    </span>
+                                    <span ng-message="server">
+                                        <span ng-bind="validation.username"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group templates-form-name" ng-switch-when="signup">
+                            <label for="templates-form-name" class="col-form-label col-md-3 text-md-left templates-form-name-label">
+                                نام و نام خانوادگی
+                            </label>
+                            <div class="col-md-9 col-lg-6">
+                                <div class="input-group templates-form-name-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-fw fa-user"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" id="templates-form-name" name="name" class="form-control" ng-model="model.name" ng-disabled="progress" required>
+                                </div>
+                                <div class="validation-inline templates-form-inline-error text-danger" ng-messages="form.name.$error" ng-show="form.$submitted || form.name.$dirty">
+                                    <span ng-message="required">
+                                        نام و نام خانوادگی را بنویسید.
+                                    </span>
+                                    <span ng-message="server">
+                                        <span ng-bind="validation.name"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group templates-form-mobile" ng-switch-when="signup">
+                            <label for="templates-form-mobile" class="col-form-label col-md-3 text-md-left templates-form-mobile-label">
+                                شماره موبایل
+                            </label>
+                            <div class="col-md-9 col-lg-6">
+                                <div class="input-group templates-form-mobile-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-fw fa-phone-square"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" id="templates-form-mobile" name="mobile" class="form-control templates-form-mobile-input" ng-model="model.mobile" ng-disabled="progress" required>
+                                </div>
+                                <div class="validation-inline templates-form-inline-error text-danger" ng-messages="form.mobile.$error" ng-show="form.$submitted || form.mobile.$dirty">
+                                    <span ng-message="required">
+                                        شماره موبایل را بنویسید.
+                                    </span>
+                                    <span ng-message="server">
+                                        <span ng-bind="validation.mobile"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group templates-form-email" ng-switch-when="signup">
+                            <label for="templates-form-email" class="col-form-label col-md-3 text-md-left templates-form-email-label">
+                                پست الکترونیک
+                            </label>
+                            <div class="col-md-9 col-lg-6">
+                                <div class="input-group templates-form-email-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-fw fa-envelope"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" id="templates-form-email" name="email" class="form-control text-left templates-form-email-input" ng-model="model.email" dir="ltr" ng-disabled="progress" placeholder="e.g. info@domain.ir">
+                                </div>
+                                <div class="templates-description form-text text-muted mt-3">
+                                    لطفا در ورود اطلاعات خود دقت کنید. چرا که تمامی اطلاعات وب‌سایت شما به همراه مطالب و ویدیوهای آموزشی در مورد راه‌اندازی و مدیریت وب‌سایت از طریق پیامک و ایمیل به شما ارسال خواهد شد.
+                                </div>
+                                <div class="validation-inline templates-form-inline-error text-danger" ng-messages="form.email.$error" ng-show="form.$submitted || form.email.$dirty">
+                                    <span ng-message="server">
+                                        <span ng-bind="validation.email"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="templates-separator" ng-switch-when="signup">
+                        <div class="row form-group templates-form-password">
+                            <label for="templates-form-password" class="col-form-label col-md-3 text-md-left templates-form-password-label">
+                                رمز عبور
+                            </label>
+                            <div class="col-md-9 col-lg-6">
+                                <div class="input-group templates-form-password-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-fw fa-lock"></i>
+                                        </span>
+                                    </div>
+                                    <input type="password" id="templates-form-password" name="password" class="form-control text-left templates-form-password-input" ng-model="model.password" dir="ltr" ng-disabled="progress" required>
+                                </div>
+                                <div class="validation-inline templates-form-inline-error text-danger" ng-messages="form.password.$error" ng-show="form.$submitted || form.password.$dirty">
+                                    <span ng-message="required">
+                                        رمز عبور را بنویسید.
+                                    </span>
+                                    <span ng-message="server">
+                                        <span ng-bind="validation.password"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group templates-form-confirmpassword" ng-switch-when="signup">
+                            <label for="templates-form-confirmpassword" class="col-form-label col-md-3 text-md-left templates-form-confirmpassword-label">
+                                تکرار رمز عبور
+                            </label>
+                            <div class="col-md-9 col-lg-6">
+                                <div class="input-group templates-form-confirmpassword-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-fw fa-check-square"></i>
+                                        </span>
+                                    </div>
+                                    <input type="password" id="templates-form-confirmpassword" name="confirmpassword" class="form-control text-left templates-form-confirmpassword-input" ng-model="model.confirmpassword" compare="model.password" dir="ltr" ng-disabled="progress" required>
+                                </div>
+                                <div class="templates-description form-text text-muted mt-3">
+                                    رمز عبور برای شناسایی شما و ورود به بخش مدیریت وب‌سایت استفاده خواهد شد.
+                                </div>
+                                <div class="validation-inline templates-form-inline-error text-danger" ng-messages="form.confirmpassword.$error" ng-show="form.$submitted || form.confirmpassword.$dirty">
+                                    <span ng-message="required">
+                                        تکرار رمز عبور را بنویسید.
+                                    </span>
+                                    <span ng-message="compare">
+                                        رمز عبور با تکرار آن یکسان نیست.
+                                    </span>
+                                    <span ng-message="server">
+                                        <span ng-bind="validation.confirmpassword"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </if>
+                    <if terms="@@user.exists()">
+                        <hr class="templates-separator">
+                        <div class="row">
+                            <div class="col-md-3"></div>
+                            <div class="col my-4">
+                                <h4>
+                                    اطلاعات کاربری
+                                </h4>
+                                شما با حساب کاربری
+                                <mark>@@user</mark>
+                                وارد شده‌اید.
+                                <br>
+                                <a href="/site/signout" target="_blank" class="d-inline-block mt-1" click-confirm="آیا مطمئن هستید؟">
+                                    اگر می‌خواهید با حساب کاربری دیگری وارد شوید، این‌جا را کلیک کنید.
+                                </a>
+                            </div>
+                        </div>
+                    </if>
+                    <hr class="templates-separator">
+                    <div class="row form-group">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-9 col-lg-6">
+                            <button class="btn btn-lg btn-success templates-form-submit" ng-disabled="progress">
+                                ایجاد وب‌سایت
+                            </button>
+                            <a href="javascript:;" class="btn btn-link templates-form-back" ng-click="model.template_id=null" click-confirm="آیا مطمئن هستید؟">
+                                بازگشت
+                            </a>
+                            <div class="templates-form-loading" ng-show="progress">
+                                <i class="fa fa-refresh fa-spin fa-fw"></i>
+                                کمی صبر کنید...
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div ng-show="succeed">
+                    <div class="templates-succeed">
+                        <h5 class="templates-succeed-title text-success">
+                            تبریک! وب‌سایت شما، با ظاهر دلخواه شما ایجاد شد
+                        </h5>
+                        <small class="bg-light">
+                            این یک شروع خیلی خوب است
+                        </small>
+                        <p class="templates-succeed-description mt-3 mb-4">
+                            حالا صاحب یک وب‌سایت هستید که به کمک آن می‌توانید در دنیای الکترونیک حضور داشته باشید. البته آدرس وب‌سایت شما موقتا به صورت زیر خواهد بود و پس از پرداخت و فعال‌سازی کامل، به دامنه دلخواه شما مانند www.portal.ir منتقل خواهد شد.
+                        </p>
+                        <div class="mb-4">
+                            <span class="d-inline-block bg-light rounded small p-3">
+                                آدرس موقت وب‌سایت شما:
+                                <br>
+                                <span class="h4 m-0">
+                                    <a ng-href="//{{succeed.sub_domain}}" target="_blank" dir="ltr">
+                                        {{succeed.sub_domain}}
+                                    </a>
+                                </span>
+                            </span>
+                        </div>
+                        <hr class="templates-separator">
+                        <p class="mb-5">
+                            اکنون می‌توانید وارد بخش مدیریت وب‌سایت خود شوید و کار با سیستم را شروع کنید. فهرستی از تنظیمات و کارهایی که لازم است انجام شود را در بخش میزکار قرار دادیم. به خاطر داشته باشید که ایمیل خود را بررسی کنید و از مطالب آموزشی‌ای که طی امروز و روزهای آینده ارسال خواهیم کرد، استفاده کنید.
+                            <br>
+                            <br> اگر سوالی داشتید، با پشتیبانی تماس بگیرید:
+                            <br>
+                            <b>02163404</b> داخلی
+                            <b>2</b>
+                        </p>
+                        <a ng-href="/user/websites/{{succeed.id}}/signin" target="_blank" class="btn btn-lg btn-success templates-succeed-signin">
+                            مدیریت
+                        </a>
+                        <a ng-href="//{{succeed.sub_domain}}" target="_blank" class="btn btn-link templates-succeed-view">
+                            مشاهده وب‌سایت
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="templates-loading" ng-show="loading">
+                <i class="fa fa-refresh fa-spin fa-fw"></i>
+                کمی صبر کنید...
+            </div>
+        </div>
+    </div>
+</main>
+<!--/main-->
+
+<include name="layouts/footer.html" />

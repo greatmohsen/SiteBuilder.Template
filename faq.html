@@ -1,0 +1,44 @@
+<include name="layouts/header.html" />
+
+<!--main-->
+<main class="page-container faq-container" itemprop="mainEntity">
+    <div class="container">
+        <div class="page-context faq-context">
+            <h1 class="page-title faq-title" itemprop="headline">
+                @@title
+            </h1>
+            <p class="form-text text-muted page-description faq-description">
+                no desc...
+            </p>
+            <hr class="page-separator faq-separator">
+            <widget type="contentlist" name="faq:users" section="سوالات متداول">
+                <h3>@@title</h3>
+                @@description
+                @@image
+                <loop src="@@items">
+                    <h5>@@title</h5>
+                    <p>@@description</p>
+                </loop>
+            </widget>
+            <hr class="page-separator faq-separator">
+            <widget type="contentlist" name="faq:resellers" section="سوالات متداول">
+                <h3>@@title</h3>
+                <loop src="@@items">
+                    <h5>@@title</h5>
+                    <p>@@description</p>
+                </loop>
+            </widget>
+            <hr class="page-separator faq-separator">
+            <widget type="contentlist" name="faq:domain" section="سوالات متداول">
+                <h3>@@title</h3>
+                <loop src="@@items">
+                    <h5>@@title</h5>
+                    <p>@@description</p>
+                </loop>
+            </widget>
+        </div>
+    </div>
+</main>
+<!--/main-->
+
+<include name="layouts/footer.html" />

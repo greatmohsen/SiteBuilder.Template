@@ -1,0 +1,60 @@
+<include name="layouts/header.html" />
+
+<!--main-->
+<main class="page-container domain-container" itemprop="mainEntity">
+    <div class="container">
+        <div class="page-context domain-context">
+            <h1 class="page-title domain-title" itemprop="headline">
+                @@title
+            </h1>
+            <p class="form-text text-muted page-description domain-description">
+                no desc...
+            </p>
+            <hr class="page-separator domain-separator">
+            <form name="whois" class="domain-whois" ng-submit="whois.$valid && submit()" eval="collect()" whois dynamic-form auto-show novalidate>
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" name="domain" id="domain" class="form-control domain-whois-input" ng-model="model.name" ng-maxlength="50" ng-disabled="progress" required placeholder="نام دامنه را مانند domain.com این‌جا بنویسید">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary domain-whois-button">
+                                <i class="fa fa-refresh fa-spin fa-fw" ng-show="progress"></i>
+                                <i class="fa fa-search fa-fw" ng-hide="progress"></i>
+                                بررسی
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div ng-show="succeed">
+                    <h5 ng-show="succeed.available" class="text-success">
+                        دامنه {{succeed.name}} آماده ثبت است. برای ایجاد وب‌سایت بر روی دامنه دلخواه خود،
+                        <a ng-href="/templates?domain={{succeed.name}}">
+                            این‌جا را کلیک کنید.
+                        </a>
+                    </h5>
+                    <h5 ng-hide="succeed.available" class="text-warning">
+                        این دامنه قبلا ثبت شده. اگر شما صاحب امتیاز آن هستید، نگران نباشید. امکان اتصال دامنه‌هایی که قبلا ثبت شده به وب‌سایت جدید شما وجود دارد. برای شروع
+                        <a ng-href="/templates?domain={{succeed.name}}">
+                            این‌جا را کلیک کنید.
+                        </a>
+                    </h5>
+                </div>
+            </form>
+            <scope context="@@reseller.domains">
+                <loop src="@@items">
+                    <div class="row">
+                        <div class="col">
+                            <h4>@@name</h4>
+                            <h5>@@extension</h5>
+                            <h6>@@price</h6>
+                            <img src="@@image" alt="ثبت دامنه @@extension">
+                        </div>
+                    </div>
+                    <hr class="page-separator domain-separator">
+                </loop>
+            </scope>
+        </div>
+    </div>
+</main>
+<!--/main-->
+
+<include name="layouts/footer.html" />
