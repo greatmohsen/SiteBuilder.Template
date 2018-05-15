@@ -487,7 +487,7 @@ hr { border-width: 2px; border-color: whitesmoke; }
 @media(min-width:768px) {
 	.text-cover-header { padding: 150px 0 160px; }
 	.text-cover-context { margin-top: -100px; background: #fff; border: 1px solid #ccc; padding: 50px 60px; }
-	.text-cover-content { margin: 20px 0; }
+	.text-cover-content { margin: 0 0 20px 0; }
 }
 
 /* group text elements */
