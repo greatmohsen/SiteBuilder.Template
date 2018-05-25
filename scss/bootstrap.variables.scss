@@ -64,7 +64,7 @@ $theme-colors: map-merge($theme-colors, (
     "white":      $white,
     "gray":       $gray-600,
     "gray-dark":  $gray-800
-  ));
+));
 
 //  *** RESPONSIVE BREAK POINTS ***
 $grid-breakpoints: (
