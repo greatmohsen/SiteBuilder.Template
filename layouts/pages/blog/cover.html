@@ -16,13 +16,13 @@
 					</if>
 					<if terms="@@user.admin">
 						<if terms="@@editurl.exists()">
-							<a href="@@editurl" class="btn btn-sm btn-primary edit-link edit-link-page blog-cover-edit">
+							<a href="@@editurl" class="btn btn-sm btn-edit edit-link edit-link-page blog-cover-edit">
 								<i class="fa fa-pencil"></i>
 								ویرایش صفحه
 							</a>
 						</if>
 						<if terms="@@addurl.exists()">
-							<a href="@@addurl" class="btn btn-sm btn-success add-link add-link-post blog-cover-add" target="_blank">
+							<a href="@@addurl" class="btn btn-sm btn-create add-link add-link-post blog-cover-add" target="_blank">
 								<i class="fa fa-plus"></i>
 								ایجاد نوشته
 							</a>
@@ -93,7 +93,7 @@
 								</if>
 							</div>
 							<if terms="@@user.admin">
-								<a href="@@editurl" class="btn btn-sm btn-primary edit-link edit-link-post blog-cover-post-edit">
+								<a href="@@editurl" class="btn btn-sm btn-edit edit-link edit-link-post blog-cover-post-edit">
 									<i class="fa fa-pencil"></i>
 									ویرایش
 								</a>
