@@ -37,9 +37,6 @@
 // $link-decoration: none;
 // $link-hover-color: darken($link-color, 15%);
 // $link-hover-decoration: underline;
-// $border-radius: .25rem;
-// $border-radius-lg: .3rem;
-// $border-radius-sm: .2rem;
 
 //  *** HEADLINES ***
 $h1-font-size: $font-size-base * 1.8;
@@ -48,9 +45,6 @@ $h3-font-size: $font-size-base * 1.4;
 $h4-font-size: $font-size-base * 1.20;
 $h5-font-size: $font-size-base * 1.1;
 $h6-font-size: $font-size-base;
-
-//  *** LINE HEIGHTS ***
-$line-height-base: 1.6;
 
 //  *** THEME COLORS ***
 $theme-colors: map-merge($theme-colors, (

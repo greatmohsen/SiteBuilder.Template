@@ -38,7 +38,7 @@ gulp.task('bootstrap.sass', function () {
 
 //  watch bootstrap files
 gulp.task('bootstrap.watch', function () {
-	return gulp.watch(['./scss/bootstrap.custom.scss', './scss/bootstrap.rtl.scss', './scss/bootstrap.scss', './scss/bootstrap.variables.scss'], ['bootstrap.sass']);
+	return gulp.watch(['./scss/bootstrap.base.scss', './scss/bootstrap.custom.scss', './scss/bootstrap.rtl.scss', './scss/bootstrap.scss', './scss/bootstrap.variables.scss'], ['bootstrap.sass']);
 });
 
 //  bootstrap js
