@@ -38,7 +38,7 @@
 												{{item.subtitle}}
 											</div>
 											<div class="cart-item-id">
-												کد: {{item.product.variant}}
+												کد: {{item.product.variant.id}}
 											</div>
 										</div>
 									</div>
@@ -51,7 +51,7 @@
 															تعداد
 														</span>
 													</div>
-													<input type="number" name="quantity" class="form-control cart-item-quantity-input" ng-model="item.quantity" min="1" max="{{item.product.max}}" ng-disabled="item.progress" required>
+													<input type="number" name="quantity" class="form-control cart-item-quantity-input" ng-model="item.quantity" min="1" max="{{item.product.variant.max}}" ng-disabled="item.progress" required>
 													<div class="input-group-append">
 														<button class="btn btn-secondary" ng-disabled="item.progress">
 															<i class="fa fa-fw fa-check" ng-hide="item.progress"></i>
@@ -67,7 +67,7 @@
 														بیش‌تر از 0 بنویسید.
 													</span>
 													<span ng-message="max">
-														کم‌تر از {{item.product.max + 1}} بنویسید.
+														کم‌تر از {{item.product.variant.max + 1}} بنویسید.
 													</span>
 												</div>
 											</div>
