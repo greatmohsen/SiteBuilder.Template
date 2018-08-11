@@ -1935,11 +1935,20 @@ hr { border-width: 2px; border-color: whitesmoke; }
 .cart-payment-separator { margin: 30px 0; }
 .cart-payment-paid {  }
 .cart-payment-paid-description {  }
+.cart-payment-shipping {  }
+.cart-payment-shipping-title {  }
+.cart-payment-shipping-badge {  }
+.cart-payment-shipping-description { color: gray; margin-bottom: 25px; }
+.cart-payment-shipping-items {  }
+.cart-payment-shipping-item {  }
+.cart-payment-shipping-item-control {  }
+.cart-payment-shipping-item-input {  }
+.cart-payment-shipping-item-label {  }
 .cart-payment-details {  }
 .cart-payment-details-price {  }
 .cart-payment-details-price-badge {  }
 .cart-payment-details-created { color: gray; }
-.cart-payment-details-duedate {  }
+.cart-payment-details-duedate { color: gray; }
 .cart-payment-method {  }
 .cart-payment-method-title {  }
 .cart-payment-method-title-badge {  }

@@ -29,10 +29,33 @@
 								<span ng-bind="succeed.description"></span>
 							</div>
 							<div ng-hide="succeed && succeed.paid !== false">
+								<div class="cart-payment-shipping">
+									<h4 class="cart-payment-shipping-title">
+										<span class="badge badge-primary cart-payment-shipping-badge">
+											{{step(0)}}
+										</span>
+										برنامه ارسال
+									</h4>
+									<div class="cart-payment-shipping-description">
+										لطفا برنامه ارسال خود را انتخاب کنید.
+									</div>
+									<div class="cart-payment-shipping-items">
+										<div class="cart-payment-shipping-item my-2" ng-repeat="item in shippings">
+											<div class="custom-control custom-radio cart-payment-shipping-item-control">
+												<input type="radio" id="cart-payment-shipping-item-{{item.id}}" class="custom-control-input cart-payment-shipping-item-input" ng-value="item.id" ng-model="model.shipping_id" ng-disabled="progress">
+												<label class="custom-control-label cart-payment-shipping-item-label" for="cart-payment-shipping-item-{{item.id}}">
+													{{item.title}} / {{item.cost ? (item.cost | number) + ' تومان' : 'رایگان'}} {{item.description ? '/' : ''}}
+													<i class="fa fa-question-circle text-muted" data-toggle="tooltip" data-original-title="{{item.description}}" ng-show="item.description"></i>
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<hr class="page-separator cart-payment-separator">
 								<div class="cart-payment-details">
 									<h4 class="cart-payment-details-price">
 										<span class="badge badge-primary cart-payment-details-price-badge">
-											1
+											{{step(1)}}
 										</span>
 										مبلغ قابل پرداخت: {{model.remaining_price|number}} تومان
 									</h4>
@@ -40,14 +63,14 @@
 										ثبت سفارش: {{model.created.subtract}}
 									</span>
 									<span class="cart-payment-details-duedate" ng-show="model.due_date">
-										سررسید پردخت: {{model.due_date.subtract}}
+										، سررسید پرداخت: {{model.due_date.subtract}}
 									</span>
 								</div>
 								<hr class="page-separator cart-payment-separator">
 								<div class="cart-payment-method">
 									<h4 class="cart-payment-method-title">
 										<span class="badge badge-primary cart-payment-method-title-badge">
-											2
+											{{step(2)}}
 										</span>
 										روش پرداخت
 									</h4>
@@ -83,7 +106,7 @@
 								<div class="cart-payment-bank-form" ng-switch-when="bank">
 									<h4 class="cart-payment-bank-title">
 										<span class="badge badge-primary cart-payment-bank-title-badge">
-											3
+											{{step(3)}}
 										</span>
 										حساب بانکی
 									</h4>
@@ -114,7 +137,7 @@
 									<hr class="page-separator cart-payment-separator">
 									<h4 class="cart-payment-transfer-title">
 										<span class="badge badge-primary cart-payment-transfer-title-badge">
-											4
+											{{step(4)}}
 										</span>
 										واریز به حساب
 									</h4>
@@ -156,7 +179,7 @@
 									<hr class="page-separator cart-payment-separator">
 									<h4 class="cart-payment-fish-title">
 										<span class="badge badge-primary cart-payment-fish-title-badge">
-											5
+											{{step(5)}}
 										</span>
 										سند پرداخت
 									</h4>
@@ -209,7 +232,7 @@
 								<div class="cart-payment-online-form" ng-switch-when="online_payment">
 									<h4 class="cart-payment-online-title">
 										<span class="badge badge-primary cart-payment-online-title-badge">
-											3
+											{{step(3)}}
 										</span>
 										درگاه پرداخت
 									</h4>
