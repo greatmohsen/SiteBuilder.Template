@@ -29,7 +29,7 @@
 								<span ng-bind="succeed.description"></span>
 							</div>
 							<div ng-hide="succeed && succeed.paid !== false">
-								<div class="cart-payment-shipping">
+								<div class="cart-payment-shipping" ng-show="shippings">
 									<h4 class="cart-payment-shipping-title">
 										<span class="badge badge-primary cart-payment-shipping-badge">
 											{{step(0)}}
@@ -51,7 +51,7 @@
 										</div>
 									</div>
 								</div>
-								<hr class="page-separator cart-payment-separator">
+								<hr class="page-separator cart-payment-separator" ng-show="shippings">
 								<div class="cart-payment-details">
 									<h4 class="cart-payment-details-price">
 										<span class="badge badge-primary cart-payment-details-price-badge">
