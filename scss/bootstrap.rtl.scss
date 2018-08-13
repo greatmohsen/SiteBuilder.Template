@@ -128,11 +128,11 @@
 .custom-control-label {
 	&::before {
 		left: auto;
-		right: 0;
+		right: -$custom-control-gutter;
 	}
 	&::after {
 		left: auto;
-		right: 0;
+		right: -$custom-control-gutter;
 	}
 }
 
