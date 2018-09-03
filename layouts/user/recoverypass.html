@@ -88,10 +88,13 @@
 								رمز عبور جدید
 							</label>
 							<div class="col-md-9 col-lg-6">
-								<input type="password" id="recoverypassconfirm-newpassword" name="newpassword" class="form-control text-left recoverypass-newpassword-input" ng-model="model.newpassword" dir="ltr" ng-disabled="progress" required>
+								<input type="password" id="recoverypassconfirm-newpassword" name="newpassword" class="form-control text-left recoverypass-newpassword-input" ng-model="model.newpassword" strength="medium" dir="ltr" ng-disabled="progress" required>
 								<div class="validation-inline recoverypass-inline-error text-danger" ng-messages="recoverypassconfirm.newpassword.$error" ng-show="recoverypassconfirm.$submitted || recoverypassconfirm.newpassword.$dirty">
 									<span ng-message="required">
 										رمز عبور جدید را بنویسید.
+									</span>
+									<span ng-message="strength">
+										رمز عبور شما باید؛ حداقل 6 حرف و ترکیبی از حروف کوچک، بزرگ یا اعداد باشد.
 									</span>
 									<span ng-message="server">
 										<span ng-bind="validation.newpassword"></span>

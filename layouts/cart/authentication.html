@@ -30,7 +30,7 @@
                                 <div class="custom-control custom-radio cart-auth-mode-signup my-2">
                                     <input type="radio" id="cart-auth-mode-signup" name="mode" value="signup" class="custom-control-input cart-auth-mode-signup-input" ng-model="model.mode" ng-disabled="progress">
                                     <label class="custom-control-label cart-auth-mode-signup-label" for="cart-auth-mode-signup">
-                                        خیر؛ کاربر جدید هستم
+                                        کاربر جدید هستم
                                     </label>
                                 </div>
                                 <div class="custom-control custom-radio cart-auth-mode-signin my-2">
@@ -117,10 +117,13 @@
                             رمز عبور
                         </label>
                         <div class="col-md-9 col-lg-6">
-                            <input type="password" id="cart-auth-password" name="password" class="form-control text-left cart-auth-password-input" ng-model="model.password" dir="ltr" ng-disabled="progress" required>
+                            <input type="password" id="cart-auth-password" name="password" class="form-control text-left cart-auth-password-input" ng-model="model.password" strength="{{model.mode == 'signup' ? 'medium' : 'none'}}" dir="ltr" ng-disabled="progress" required>
                             <div class="validation-inline cart-auth-inline-error text-danger" ng-messages="auth.password.$error" ng-show="auth.$submitted || auth.password.$dirty">
                                 <span ng-message="required">
                                     رمز عبور را بنویسید.
+                                </span>
+                                <span ng-message="strength">
+                                    رمز عبور شما باید؛ حداقل 6 حرف و ترکیبی از حروف کوچک، بزرگ یا اعداد باشد.
                                 </span>
                                 <span ng-message="server">
                                     <span ng-bind="validation.password"></span>
